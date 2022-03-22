@@ -1,6 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
 
+
+
+//{props.children}
+//{props.saludo}
+
+
 function App() {
   return (
     <div className="App">
@@ -15,7 +21,9 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+         
+
+         
         </a>
       </header>
     </div>
