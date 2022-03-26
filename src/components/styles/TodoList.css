@@ -1,0 +1,17 @@
+ul {
+    padding: 0 0 56px 0;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    list-style: none;
+    width: 56%;
+    align-self: center;
+}
+
+.TodoList {
+    /* align-items: center; */
+    /* align-self: center; */
+    display: flex;
+    flex-direction: column;
+}
