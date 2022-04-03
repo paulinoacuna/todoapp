@@ -1,21 +1,20 @@
 import React from "react"
+import { TodoContext } from "../TodoContext";
 import "./TodoSearch.css"
 
-// USO DEL ESTADO
-
-function TodoSearch({searchValue,setSearchValue}) {
-    const [] = React.useState('')
+function TodoSearch() {
     
-
+    const value = React.useContext(TodoContext)
+    
     const onSearchValueChange = (entrada) => {
         //captura la entrada en la barra de busqueda y la guarda en el hook de estado.
-        setSearchValue(entrada.target.value)
+        value.setSearchValue(entrada.target.value)
     }
 
     return (
         <input className="TodoSearch"
                placeholder="Hacer la compra.."
-               value={searchValue}
+               value={value.searchValue}
                onChange={onSearchValueChange}/> 
     );
 }

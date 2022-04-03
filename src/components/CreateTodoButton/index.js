@@ -1,15 +1,17 @@
 import React from "react"
 import "./CreateTodoButton.css"
+import { TodoContext } from "../TodoContext"
 
-function CreateTodoButton(params) {
+function CreateTodoButton() {
+    const value = React.useContext(TodoContext)
 
-    const onClickButton = (msg) => {
-        alert(msg)
-    }
+    const onClickButton = () => {
+        value.setModalActive(prevState=>!prevState) //toggle
+     }
 
     return (
         <button className="CreateTodoButton"
-                onClick={() => {onClickButton("mensajito")}}>+</button>
+                onClick={onClickButton}>+</button>
     );
 }
 

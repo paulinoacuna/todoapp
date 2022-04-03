@@ -1,46 +1,50 @@
 import React from 'react'
 
+import {TodoContext} from '../TodoContext'
+
 import {TodoCounter} from "../TodoCounter"
 import { TodoSearch } from "../TodoSearch"
 import { TodoList } from "../TodoList"
 import { TodoItem } from "../TodoItem"
 import { CreateTodoButton } from "../CreateTodoButton"
+import { TodoForm } from '../TodoForm'
+
+import {Modal} from '../Modal'
+import '../Modal/Modal.css'
 
 
 
-function AppUI(props){
+function AppUI(){
+  const value = React.useContext(TodoContext)
 
-
-    
     return (
 
         <React.Fragment> 
     
-          <TodoCounter
-            completedTodos={props.completedTodos}
-            totalTodos={props.totalTodos}/>
+          <TodoCounter/>
           
-          <TodoSearch
-            searchValue={props.searchValue}
-            setSearchValue={props.setSearchValue}/>
+          <TodoSearch/>
           
-           <TodoList>
+          <TodoList>
 
-            {props.error && <p>Ha ocurrido un error :/ ${props.error}</p>}
-            {props.loading && <p>Now loading...</p>}
-            {(!props.loading && !props.searchedTodos.length) && <p>No tienes tareas pendientes :)</p>}
+            {value.error && <p>Ha ocurrido un error :/ ${value.error}</p>}
+            {value.loading && <p>Now loading...</p>}
+            {(!value.loading && !value.searchedTodos.length) && <p>No tienes tareas pendientes :)</p>}
 
+            {value.searchedTodos.map(todo => (
+              <TodoItem key={todo.text}
+                        text={todo.text}
+                        complete={todo.complete}
+                        onComplete={() => value.onCompleteTodo(todo.text)}
+                        onDelete={() => value.onDeleteTodo(todo.text)}/>
+             ))}
+          </TodoList>
 
-
-            {props.searchedTodos.map(todo => (
-               <TodoItem key={todo.text}
-                         text={todo.text}
-                         complete={todo.complete}
-                         onComplete={() => props.onCompleteTodo(todo.text)}
-                         onDelete={() => props.onDeleteTodo(todo.text)}/>
-            ))}
-           </TodoList>
-    
+          {!!value.modalActive &&
+             <Modal>
+                <TodoForm/>
+            </Modal>
+          }
            <CreateTodoButton/>
           
     

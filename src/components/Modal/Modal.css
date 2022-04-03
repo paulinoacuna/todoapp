@@ -1,0 +1,16 @@
+.Modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    /* border: 2px solid rgb(26, 143, 143); */
+    top: 0px;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(39, 39, 39, 0.842);
+    color: white;
+}
+
+#inputTodo {
+    resize: none;
+}
